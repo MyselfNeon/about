@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trigger All Bots</title>
+</head>
+<body>
+<h2>Triggering All Bots...</h2>
+<p>Please wait a few seconds.</p>
+
+<script>
+const urls = [
+  "https://session-generator-bot-iq7n.onrender.com/",
+  "https://session-generator-bot2-iq7n.onrender.com/"
+];
+
+urls.forEach(url => {
+  fetch(url)
+    .then(() => console.log(`Pinged: ${url}`))
+    .catch(err => console.error(`Failed: ${url}`, err));
+});
+</script>
+
+</body>
+</html>
