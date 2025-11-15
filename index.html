@@ -1,89 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyselfNeon</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Times New Roman', serif;
-      background: linear-gradient(135deg,#0f172a,#1e293b);
-      color: #f8fafc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 60px 16px;
-      min-height: 100vh;
-      overflow-y: auto;
-      scroll-behavior: smooth;
-      position: relative;
-    }
-    #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-    .container { width: 100%; max-width: 420px; text-align: center; position: relative; z-index: 3; margin-top: 28px; }
-    .avatar {
-      width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 22px;
-      border: 4px solid #38bdf8; box-shadow: 0 6px 22px rgba(56,189,248,0.18); object-fit: cover; display: block;
-    }
-    h1 { margin: 10px 0; font-size: 22px; }
-    p.lead { margin: 10px 0 14px; color: #00ff66; font-size: 14px; font-weight: 600; }
-    p.extra { font-size: 13px; color: #f1f5f9; margin: 0 0 22px; line-height: 1.5; }
-    .btn {
-      display: flex; align-items: center; justify-content: center; gap: 10px; height: 50px;
-      text-decoration: none; color: #fff; font-weight: 700; font-size: 14px; border-radius: 12px;
-      border: 3px solid transparent; position: relative; overflow: hidden; z-index: 0;
-      box-shadow: 0 6px 18px rgba(2, 6, 23, 0.45);
-    }
-    .btn::before {
-      content: ''; position: absolute; inset: 0; padding: 3px; border-radius: 12px;
-      background: linear-gradient(90deg, #ff4d6d, #38bdf8, #facc15, #d946ef);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: destination-out; mask-composite: exclude; z-index: -1;
-      animation: borderShift 5s linear infinite;
-    }
-    @keyframes borderShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-    .btn i { font-size: 19px; margin-top: 2px; }
-    .btn:hover { transform: translateY(-3px); }
-    .btn.full { width: 80%; margin: 10px auto; }
-    .row { width: 82%; margin: 6px auto; display: flex; gap: 10px; }
-    .row .btn { flex: 1; min-width: 0; }
-    .scroll-down { margin-top: 20px; font-size: 28px; color: #38bdf8; cursor: pointer; animation: bounce 1.5s infinite; }
-    @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(8px); } 60% { transform: translateY(4px); } }
-    .section-title { margin-top: 28px; margin-bottom: 6px; font-size: 20px; font-weight: bold; color: #facc15; text-align: center; }
-    .about-box {
-      background: rgba(30, 41, 59, 0.6);
-      border: 2px solid #38bdf8;
-      border-radius: 16px;
-      padding: 20px;
-      margin: 24px auto;
-      max-width: 720px;
-      text-align: left;
-      line-height: 1.6;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-    }
-    .about-box h3 { color: #facc15; margin-top: 16px; font-size: 18px; }
-    .about-box .intro { font-size: 15px; margin-bottom: 12px; }
-    .about-box .highlight { color: #38bdf8; font-weight: bold; }
-
-    details {
-      margin-top: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      color: #38bdf8;
-    }
-
-    details[open] summary {
-      color: #facc15;
-    }
-
-    details p {
-      margin: 10px 0;
-      font-size: 14px;
-      color: #f1f5f9;
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyselfNeon</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body {
+  margin: 0;
+  font-family: 'Times New Roman', serif;
+  background: linear-gradient(135deg,#0f172a,#1e293b);
+  color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 16px;
+  min-height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  position: relative;
+}
+#particles { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+.container { width:100%; max-width:420px; text-align:center; position: relative; z-index:3; margin-top: 28px; }
+.avatar {
+  width:120px; height:120px; border-radius:50%; margin:0 auto 22px;
+  border:4px solid #38bdf8; box-shadow:0 6px 22px rgba(56,189,248,0.18); object-fit:cover; display:block;
+}
+h1 { margin:10px 0; font-size:22px; }
+p.lead { margin:10px 0 14px; color:#00ff66; font-size:14px; font-weight:600; }
+p.extra { font-size: 13px; color: #f1f5f9; margin: 0 0 22px; line-height: 1.5; }
+.btn {
+  display:flex; align-items:center; justify-content:center; gap:10px; height: 50px;
+  text-decoration:none; color:#fff; font-weight:700; font-size:14px; border-radius: 12px;
+  border: 3px solid transparent; position: relative; overflow: hidden; z-index: 0;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+}
+.btn::before {
+  content:''; position:absolute; inset:0; padding:3px; border-radius:12px;
+  background:linear-gradient(90deg,#ff4d6d,#38bdf8,#facc15,#d946ef);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out; mask-composite: exclude; z-index:-1;
+  animation: borderShift 5s linear infinite;
+}
+@keyframes borderShift { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+.btn i { font-size:19px; margin-top:2px; }
+.btn:hover { transform: translateY(-3px); }
+.btn.full { width: 80%; margin: 10px auto; }
+.row { width: 82%; margin: 6px auto; display:flex; gap:10px; }
+.row .btn { flex:1; min-width:0; }
+.scroll-down { margin-top: 20px; font-size: 28px; color: #38bdf8; cursor: pointer; animation: bounce 1.5s infinite; }
+@keyframes bounce { 0%,20%,50%,80%,100% { transform: translateY(0); } 40% { transform: translateY(8px); } 60% { transform: translateY(4px); } }
+.section-title { margin-top: 28px; margin-bottom: 6px; font-size: 20px; font-weight: bold; color: #facc15; text-align: center; }
+.about-box {
+  background: rgba(30,41,59,0.6);
+  border: 2px solid #38bdf8;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 24px auto;
+  max-width: 720px;
+  text-align: left;
+  line-height: 1.6;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+}
+.about-box h3 { color: #facc15; margin-top: 16px; font-size: 18px; }
+.about-box .intro { font-size: 15px; margin-bottom: 12px; }
+.about-box .highlight { color: #38bdf8; font-weight: bold; }
+</style>
 </head>
 <body>
 <canvas id="particles"></canvas>
@@ -105,32 +87,30 @@
   <a class="btn github full" href="https://github.com/MyselfNeon" target="_blank"><i class="fab fa-github"></i>GitHub</a>
 </div>
 
-<details>
-  <summary class="section-title">🌟 About Me</summary>
-  <div class="about-box">
-    <p class="intro">
-      Passionate part-time <span class="highlight">Modder</span> & <span class="highlight">Coder</span> who turns Ideas into Tools.  
-      I Build <span class="highlight">Web Apps, Bots, and Automation Scripts</span> that Solve real problems — not just for Fun, but with Impact.
-    </p>
+<h2 id="about" class="section-title">🌟 NeonAnurag</h2>
+<div class="about-box">
+  <p class="intro">
+    Passionate part-time <span class="highlight">Modder</span> & <span class="highlight">Coder</span> who turns Ideas into Tools.  
+    I Build <span class="highlight">Web Apps, Bots, and Automation Scripts</span> that Solve real problems — not just for Fun, but with Impact.
+  </p>
 
-    <h3>💻 What I Do</h3>
-    <p class="intro">🤖 Develop <b>Telegram Bots</b>: File Rename Tools, Auto-Forwarding Systems, Session Generators, etc.</p>
-    <p class="intro">🐍 Work with <b>Python & Scripting</b> to Automate workflows and Reduce Repetitive Tasks.</p>
-    <p class="intro">🛠️ Create <b>Utilities</b> that Help Communities & Teams be more efficient.</p>
+  <h3>💻 What I Do</h3>
+  <p class="intro">🤖 Develop <b>Telegram Bots</b>: File Rename Tools, Auto-Forwarding Systems, Session Generators, etc.</p>
+  <p class="intro">🐍 Work with <b>Python & Scripting</b> to Automate workflows and Reduce Repetitive Tasks.</p>
+  <p class="intro">🛠️ Create <b>Utilities</b> that Help Communities & Teams be more efficient.</p>
 
-    <h3>🔥 What Drives Me</h3>
-    <p class="intro">I Love taking Problems and Turning them into something Programmable.</p>
-    <p class="intro">Always curious about <b>New Tech, cleaner Code, Better user Experiences</b>.</p>
-    <p class="intro"><b>Collaboration, Learning, and Iteration</b> are central: every bot/script is a chance to improve.</p>
+  <h3>🔥 What Drives Me</h3>
+  <p class="intro">I Love taking Problems and Turning them into something Programmable.</p>
+  <p class="intro">Always curious about <b>New Tech, cleaner Code, Better user Experiences</b>.</p>
+  <p class="intro"><b>Collaboration, Learning, and Iteration</b> are central: every bot/script is a chance to improve.</p>
 
-    <h3>📌 Pinned Projects</h3>
-    <span class="intro"><b>01 - NeonFilter-Bot</b></span><br>
-    <span class="intro"><b>02 - FileStore-Bot</b></span><br>
-    <span class="intro"><b>03 - Rename2GB-Bot</b></span><br>
-    <span class="intro"><b>04 - SessionGenerator-Bot</b></span><br>
-    <span class="intro"><b>05 - SaveRestrictions-Bot</b></span>
-  </div>
-</details>
+  <h3>📌 Pinned Projects</h3>
+<span class="intro"><b>01 - NeonFilter-Bot</b></span><br>
+<span class="intro"><b>02 - FileStore-Bot</b></span><br>
+<span class="intro"><b>03 - Rename2GB-Bot</b></span><br>
+<span class="intro"><b>04 - SessionGenerator-Bot</b></span><br>
+<span class="intro"><b>05 - SaveRestrictions-Bot</b></span>
+</div>
 
 <script>
 // === Canvas Setup ===
@@ -141,150 +121,40 @@ resizeCanvas();
 
 // === Particles ===
 let particles = [];
-for (let i = 0; i < 30; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2 + 1,
-    dx: (Math.random() - 0.5) * 0.3,
-    dy: (Math.random() - 0.5) * 0.3
-  });
-}
+for(let i=0;i<30;i++){ particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)*0.3, dy:(Math.random()-0.5)*0.3}); }
 
 // === Twinkles ===
 let twinkles = [];
-for (let i = 0; i < 60; i++) {
-  twinkles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 1.5 + 0.5,
-    alpha: Math.random(),
-    da: (Math.random() * 0.02) + 0.005
-  });
-}
+for(let i=0;i<60;i++){ twinkles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.5+0.5, alpha:Math.random(), da:(Math.random()*0.02)+0.005}); }
 
 // === Glitter ===
 let glitters = [];
-function spawnGlitter() {
-  glitters.push({
-    x: Math.random() * canvas.width,
-    y: -10,
-    r: Math.random() * 2 + 1,
-    dy: Math.random() * 0.3 + 0.1,
-    alpha: 1
-  });
-  setTimeout(spawnGlitter, 200);
-}
+function spawnGlitter(){ glitters.push({x:Math.random()*canvas.width, y:-10, r:Math.random()*2+1, dy:Math.random()*0.3+0.1, alpha:1}); setTimeout(spawnGlitter,200);}
 spawnGlitter();
 
 // === Shooting Stars ===
 let shootingStars = [];
-function drawStar(ctx, x, y, r, color) {
-  ctx.save();
-  ctx.beginPath();
-  ctx.translate(x, y);
-  ctx.moveTo(0, -r);
-  for (let i = 0; i < 5; i++) {
-    ctx.rotate(Math.PI / 5);
-    ctx.lineTo(0, -r * 0.5);
-    ctx.rotate(Math.PI / 5);
-    ctx.lineTo(0, -r);
-  }
-  ctx.fillStyle = color;
-  ctx.shadowBlur = 10;
-  ctx.shadowColor = color;
-  ctx.fill();
-  ctx.restore();
-}
-function spawnShootingStar() {
-  const colors = ["#ff4d6d", "#38bdf8", "#facc15", "#d946ef", "#22c55e"];
-  shootingStars.push({
-    x: Math.random() * canvas.width * 0.7,
-    y: Math.random() * canvas.height * 0.3,
-    dx: 2 + Math.random() * 1,
-    dy: 1 + Math.random() * 1,
-    r: 6,
-    color: colors[Math.floor(Math.random() * colors.length)],
-    trail: []
-  });
-  setTimeout(spawnShootingStar, 1000 + Math.random() * 2000);
-}
+function drawStar(ctx,x,y,r,color){ ctx.save(); ctx.beginPath(); ctx.translate(x,y); ctx.moveTo(0,-r); for(let i=0;i<5;i++){ctx.rotate(Math.PI/5); ctx.lineTo(0,-r*0.5); ctx.rotate(Math.PI/5); ctx.lineTo(0,-r);} ctx.fillStyle=color; ctx.shadowBlur=10; ctx.shadowColor=color; ctx.fill(); ctx.restore();}
+function spawnShootingStar(){ const colors=["#ff4d6d","#38bdf8","#facc15","#d946ef","#22c55e"]; shootingStars.push({x:Math.random()*canvas.width*0.7, y:Math.random()*canvas.height*0.3, dx:2+Math.random()*1, dy:1+Math.random()*1, r:6, color:colors[Math.floor(Math.random()*colors.length)], trail:[]}); setTimeout(spawnShootingStar,1000+Math.random()*2000);}
 spawnShootingStar();
 
 // === Snow ===
 let snowflakes = [];
-function spawnSnow() {
-  for (let i = 0; i < 2; i++) {
-    let alpha = Math.random() * 0.5 + 0.3;
-    if (alpha > 0.6) alpha = 0.6;
-    snowflakes.push({
-      x: Math.random() * canvas.width,
-      y: -10,
-      size: Math.random() * 6 + 2,
-      dx: (Math.random() - 0.5) * 0.5,
-      dy: (Math.random() * 1 + 0.2),
-      alpha
-    });
-  }
-  setTimeout(spawnSnow, 200);
-}
+function spawnSnow(){ for(let i=0;i<2;i++){ let alpha=Math.random()*0.5+0.3; if(alpha>0.6) alpha=0.6; snowflakes.push({x:Math.random()*canvas.width, y:-10, size:Math.random()*6+2, dx:(Math.random()-0.5)*0.5, dy:(Math.random()*1+0.2), alpha});} setTimeout(spawnSnow,200);}
 spawnSnow();
 
 // === Animation Loop ===
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(255,255,255,0.7)";
-    ctx.fill();
-    p.x += p.dx;
-    p.y += p.dy;
-    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-  });
-  twinkles.forEach(t => {
-    ctx.beginPath();
-    ctx.arc(t.x, t.y, t.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,255,${t.alpha})`;
-    ctx.fill();
-    t.alpha += t.da;
-    if (t.alpha > 1 || t.alpha < 0) t.da *= -1;
-  });
-  glitters.forEach((g, i) => {
-    ctx.beginPath();
-    ctx.arc(g.x, g.y, g.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,255,${g.alpha})`;
-    ctx.fill();
-    g.y += g.dy;
-    g.alpha -= 0.002;
-    if (g.alpha <= 0) glitters.splice(i, 1);
-  });
-  shootingStars.forEach((s, i) => {
-    s.trail.unshift({ x: s.x, y: s.y, life: 1 });
-    if (s.trail.length > 20) s.trail.pop();
-    drawStar(ctx, s.x, s.y, s.r, s.color);
-    s.trail.forEach((pt, ti) => {
-      drawStar(ctx, pt.x, pt.y, s.r * (0.6 - ti / 25), s.color);
-      pt.life -= 0.05;
-    });
-    s.x += s.dx;
-    s.y += s.dy;
-    if (s.x > canvas.width + 100 || s.y > canvas.height + 100) shootingStars.splice(i, 1);
-  });
-  snowflakes.forEach((flake, i) => {
-    ctx.beginPath();
-    ctx.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(236,73,163,${flake.alpha})`;
-    ctx.fill();
-    flake.x += flake.dx;
-    flake.y += flake.dy;
-    flake.alpha -= 0.0001;
-    if (flake.y > canvas.height || flake.alpha <= 0) snowflakes.splice(i, 1);
-  });
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle="rgba(255,255,255,0.7)"; ctx.fill(); p.x+=p.dx; p.y+=p.dy; if(p.x<0||p.x>canvas.width)p.dx*=-1; if(p.y<0||p.y>canvas.height)p.dy*=-1; });
+  twinkles.forEach(t=>{ ctx.beginPath(); ctx.arc(t.x,t.y,t.r,0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${t.alpha})`; ctx.fill(); t.alpha+=t.da; if(t.alpha>1||t.alpha<0) t.da*=-1; });
+  glitters.forEach((g,i)=>{ ctx.beginPath(); ctx.arc(g.x,g.y,g.r,0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${g.alpha})`; ctx.fill(); g.y+=g.dy; g.alpha-=0.002; if(g.alpha<=0) glitters.splice(i,1); });
+  shootingStars.forEach((s,i)=>{ s.trail.unshift({x:s.x,y:s.y,life:1}); if(s.trail.length>20)s.trail.pop(); drawStar(ctx,s.x,s.y,s.r,s.color); s.trail.forEach((pt,ti)=>{ drawStar(ctx,pt.x,pt.y,s.r*(0.6-ti/25),s.color); pt.life-=0.05; }); s.x+=s.dx; s.y+=s.dy; if(s.x>canvas.width+100||s.y>canvas.height+100) shootingStars.splice(i,1); });
+  snowflakes.forEach((flake,i)=>{ ctx.beginPath(); ctx.arc(flake.x,flake.y,flake.size,0,Math.PI*2); ctx.fillStyle=`rgba(236,73,163,${flake.alpha})`; ctx.fill(); flake.x+=flake.dx; flake.y+=flake.dy; flake.alpha-=0.0001; if(flake.y>canvas.height||flake.alpha<=0) snowflakes.splice(i,1); });
   requestAnimationFrame(animate);
 }
 animate();
 </script>
 </body>
-</html>
+  </html>
+  
