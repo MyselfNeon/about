@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MyselfNeon | Developer Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* --- Core Variables & Reset --- */
@@ -15,16 +14,18 @@
   --neon-pink: #ff4d6d;
   --neon-gold: #facc15;
   --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --font-script: 'Brush Script MT', 'Brush Script Std', cursive; /* The Requested Font */
-  --font-body: 'Poppins', sans-serif;
+  --text-muted: #cbd5e1; /* Made slightly lighter for Times New Roman readability */
+  
+  /* --- FONTS CONFIGURATION --- */
+  --font-title: 'Brush Script MT', 'Brush Script Std', cursive;
+  --font-body: 'Times New Roman', Times, serif; 
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: var(--font-body);
+  font-family: var(--font-body); /* Applied Times New Roman here */
   background: linear-gradient(135deg, #020617, #1e293b);
   color: var(--text-main);
   display: flex;
@@ -74,33 +75,34 @@ body {
   animation: pulseGlow 3s infinite alternate;
 }
 
-/* --- UPDATED FONT STYLES --- */
+/* --- TITLE FONT (Brush Script) --- */
 h1 {
   margin: 10px 0 0;
-  font-family: var(--font-script); /* Brush Script MT applied here */
-  font-size: 52px; /* Increased size because Script fonts appear smaller */
+  font-family: var(--font-title);
+  font-size: 56px; /* Larger to make the script readable */
   font-weight: normal;
   letter-spacing: 1px;
   color: #fff;
-  text-shadow: 0 0 15px rgba(56, 189, 248, 0.8); /* Stronger Neon Glow */
+  text-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
 }
 
+/* --- BODY FONT (Times New Roman) --- */
 p.lead {
   margin: 5px 0 15px;
   color: var(--accent);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px; /* Times New Roman needs to be slightly larger */
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: var(--font-body);
 }
 
 p.extra {
-  font-size: 14px;
+  font-size: 18px; /* Adjusted for Times New Roman */
   color: var(--text-muted);
   margin: 0 auto 25px;
-  line-height: 1.6;
+  line-height: 1.5;
   max-width: 90%;
+  font-style: italic; /* Looks good with Times New Roman */
 }
 
 /* --- Buttons --- */
@@ -119,8 +121,10 @@ p.extra {
   height: 55px;
   text-decoration: none;
   color: #fff;
-  font-weight: 600;
-  font-size: 16px;
+  /* Times New Roman explicitly set for buttons */
+  font-family: var(--font-body); 
+  font-weight: bold;
+  font-size: 18px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -168,8 +172,8 @@ p.extra {
 .section-title {
   margin-top: 50px;
   margin-bottom: 20px;
-  font-family: var(--font-script); /* Brush Script MT applied here */
-  font-size: 42px; /* Larger for script font */
+  font-family: var(--font-title); /* Brush Script */
+  font-size: 48px;
   font-weight: normal;
   color: var(--text-main);
   text-align: center;
@@ -186,44 +190,45 @@ p.extra {
   max-width: 600px;
   width: 95%;
   text-align: left;
-  line-height: 1.7;
+  line-height: 1.6;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  font-size: 18px; /* Increased base size for Times New Roman */
 }
 
 .about-box h3 {
   color: var(--accent);
   margin: 25px 0 10px;
-  font-size: 28px; /* Increased for script font */
-  font-family: var(--font-script); /* Brush Script MT applied here */
+  font-size: 32px;
+  font-family: var(--font-title); /* Brush Script */
   font-weight: normal;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-/* Adjust icon size inside h3 because the font is cursive */
-.about-box h3 i { font-size: 22px; }
+.about-box h3 i { font-size: 24px; }
 
 .about-box .intro {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-muted);
-  margin-bottom: 10px;
-  font-family: var(--font-body); /* Keep body text readable */
+  margin-bottom: 12px;
+  font-family: var(--font-body); /* Times New Roman */
 }
 
 .about-box .intro b { color: var(--text-main); }
-.highlight { color: var(--accent); font-weight: 600; }
+.highlight { color: var(--accent); font-weight: bold; }
 .project-list { padding-left: 0; }
+
 .project-item {
   display: block;
-  padding: 8px 12px;
+  padding: 10px 14px;
   margin-bottom: 8px;
   background: rgba(255,255,255,0.03);
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 17px;
   color: var(--text-main);
   border-left: 3px solid var(--neon-pink);
   transition: transform 0.2s;
-  font-family: var(--font-body);
+  font-family: var(--font-body); /* Times New Roman */
 }
 .project-item:hover { transform: translateX(5px); background: rgba(255,255,255,0.06); }
 
@@ -234,7 +239,8 @@ p.extra {
 
 /* --- Responsive --- */
 @media (max-width: 480px) {
-  h1 { font-size: 42px; }
+  h1 { font-size: 46px; }
+  .section-title { font-size: 40px; }
   .about-box { padding: 20px; }
 }
 </style>
@@ -246,7 +252,9 @@ p.extra {
   <div class="avatar-container">
     <img class="avatar" src="https://files.catbox.moe/opf0f0.jpg" alt="Neon avatar">
   </div>
+  
   <h1>MyselfNeon</h1>
+  
   <p class="lead">🚀 Dev | 📚 Student | 🤖 Automation</p>
   <p class="extra">Exploring Tech, Creating Bots, and building Tools that make everyday Tasks easier. Always Learning, always Experimenting.</p>
   
@@ -370,4 +378,4 @@ function animate() {
 animate();
 </script>
 </body>
-    </html>
+  </html>
