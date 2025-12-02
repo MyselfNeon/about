@@ -16,13 +16,15 @@
   --neon-gold: #facc15;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
+  --font-script: 'Brush Script MT', 'Brush Script Std', cursive; /* The Requested Font */
+  --font-body: 'Poppins', sans-serif;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif; /* Major style upgrade */
+  font-family: var(--font-body);
   background: linear-gradient(135deg, #020617, #1e293b);
   color: var(--text-main);
   display: flex;
@@ -47,7 +49,7 @@ body {
 /* --- Layout Containers --- */
 .container {
   width: 100%;
-  max-width: 480px; /* Kept narrow for mobile-first aesthetic */
+  max-width: 480px;
   text-align: center;
   position: relative;
   z-index: 3;
@@ -59,7 +61,7 @@ body {
   position: relative;
   width: 130px;
   height: 130px;
-  margin: 0 auto 20px;
+  margin: 0 auto 15px;
 }
 
 .avatar {
@@ -72,14 +74,15 @@ body {
   animation: pulseGlow 3s infinite alternate;
 }
 
+/* --- UPDATED FONT STYLES --- */
 h1 {
-  margin: 5px 0;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  background: linear-gradient(to right, #fff, #94a3b8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin: 10px 0 0;
+  font-family: var(--font-script); /* Brush Script MT applied here */
+  font-size: 52px; /* Increased size because Script fonts appear smaller */
+  font-weight: normal;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(56, 189, 248, 0.8); /* Stronger Neon Glow */
 }
 
 p.lead {
@@ -89,6 +92,7 @@ p.lead {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: var(--font-body);
 }
 
 p.extra {
@@ -99,7 +103,7 @@ p.extra {
   max-width: 90%;
 }
 
-/* --- Buttons (DevGagan Style) --- */
+/* --- Buttons --- */
 .btn-wrapper {
   display: flex;
   flex-direction: column;
@@ -116,7 +120,7 @@ p.extra {
   text-decoration: none;
   color: #fff;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -127,7 +131,6 @@ p.extra {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* The Animated Border Effect */
 .btn::before {
   content: '';
   position: absolute;
@@ -165,15 +168,12 @@ p.extra {
 .section-title {
   margin-top: 50px;
   margin-bottom: 20px;
-  font-size: 22px;
-  font-weight: 700;
+  font-family: var(--font-script); /* Brush Script MT applied here */
+  font-size: 42px; /* Larger for script font */
+  font-weight: normal;
   color: var(--text-main);
   text-align: center;
-  position: relative;
-  display: inline-block;
-}
-.section-title::after {
-  content: ''; display: block; width: 40px; height: 3px; background: var(--accent); margin: 5px auto 0; border-radius: 2px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .about-box {
@@ -193,18 +193,21 @@ p.extra {
 .about-box h3 {
   color: var(--accent);
   margin: 25px 0 10px;
-  font-size: 17px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 28px; /* Increased for script font */
+  font-family: var(--font-script); /* Brush Script MT applied here */
+  font-weight: normal;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
+/* Adjust icon size inside h3 because the font is cursive */
+.about-box h3 i { font-size: 22px; }
 
 .about-box .intro {
   font-size: 15px;
   color: var(--text-muted);
   margin-bottom: 10px;
+  font-family: var(--font-body); /* Keep body text readable */
 }
 
 .about-box .intro b { color: var(--text-main); }
@@ -220,6 +223,7 @@ p.extra {
   color: var(--text-main);
   border-left: 3px solid var(--neon-pink);
   transition: transform 0.2s;
+  font-family: var(--font-body);
 }
 .project-item:hover { transform: translateX(5px); background: rgba(255,255,255,0.06); }
 
@@ -230,7 +234,7 @@ p.extra {
 
 /* --- Responsive --- */
 @media (max-width: 480px) {
-  h1 { font-size: 24px; }
+  h1 { font-size: 42px; }
   .about-box { padding: 20px; }
 }
 </style>
@@ -294,12 +298,6 @@ function resizeCanvas(){ canvas.width = window.innerWidth; canvas.height = windo
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-// === Helper Functions ===
-function randomColor() {
-  const colors = ["rgba(56, 189, 248, 0.7)", "rgba(255, 77, 109, 0.7)", "rgba(250, 204, 21, 0.7)"];
-  return colors[Math.floor(Math.random() * colors.length)];
-}
-
 // === Elements: Particles (Subtle background movement) ===
 let particles = [];
 const particleCount = 40;
@@ -352,37 +350,24 @@ spawnShootingStar();
 // === Animation Loop ===
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-  // Draw Particles
   particles.forEach(p => { p.update(); p.draw(); });
-
-  // Draw Shooting Stars
   shootingStars.forEach((s, index) => {
     ctx.beginPath();
     ctx.moveTo(s.x, s.y);
-    ctx.lineTo(s.x - s.dx * 3, s.y - s.dy * 3); // Tail
+    ctx.lineTo(s.x - s.dx * 3, s.y - s.dy * 3);
     ctx.strokeStyle = `rgba(56, 189, 248, ${s.life})`;
     ctx.lineWidth = 2;
     ctx.stroke();
-    
-    // Head glow
     ctx.beginPath();
     ctx.arc(s.x, s.y, 1, 0, Math.PI*2);
     ctx.fillStyle = "#fff";
     ctx.fill();
-
-    s.x += s.dx;
-    s.y += s.dy;
-    s.life -= 0.02;
-
-    if (s.life <= 0 || s.x > canvas.width || s.y > canvas.height) {
-      shootingStars.splice(index, 1);
-    }
+    s.x += s.dx; s.y += s.dy; s.life -= 0.02;
+    if (s.life <= 0 || s.x > canvas.width || s.y > canvas.height) shootingStars.splice(index, 1);
   });
-
   requestAnimationFrame(animate);
 }
 animate();
 </script>
 </body>
-</html>
+    </html>
