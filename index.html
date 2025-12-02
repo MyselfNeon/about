@@ -3,158 +3,386 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyselfNeon</title>
+<title>MyselfNeon | Developer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+/* --- Core Variables & Reset --- */
+:root {
+  --bg-dark: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.7);
+  --accent: #38bdf8;
+  --neon-pink: #ff4d6d;
+  --neon-gold: #facc15;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
-  font-family: 'Times New Roman', serif;
-  background: linear-gradient(135deg,#0f172a,#1e293b);
-  color: #f8fafc;
+  font-family: 'Poppins', sans-serif; /* Major style upgrade */
+  background: linear-gradient(135deg, #020617, #1e293b);
+  color: var(--text-main);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 16px;
+  padding: 40px 16px;
   min-height: 100vh;
+  overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
+}
+
+/* --- Particles Canvas --- */
+#particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Layout Containers --- */
+.container {
+  width: 100%;
+  max-width: 480px; /* Kept narrow for mobile-first aesthetic */
+  text-align: center;
   position: relative;
+  z-index: 3;
+  animation: fadeUp 1s ease-out;
 }
-#particles { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
-.container { width:100%; max-width:420px; text-align:center; position: relative; z-index:3; margin-top: 28px; }
+
+/* --- Header & Avatar --- */
+.avatar-container {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 20px;
+}
+
 .avatar {
-  width:120px; height:120px; border-radius:50%; margin:0 auto 22px;
-  border:4px solid #38bdf8; box-shadow:0 6px 22px rgba(56,189,248,0.18); object-fit:cover; display:block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+  object-fit: cover;
+  animation: pulseGlow 3s infinite alternate;
 }
-h1 { margin:10px 0; font-size:22px; }
-p.lead { margin:10px 0 14px; color:#00ff66; font-size:14px; font-weight:600; }
-p.extra { font-size: 13px; color: #f1f5f9; margin: 0 0 22px; line-height: 1.5; }
-.btn {
-  display:flex; align-items:center; justify-content:center; gap:10px; height: 50px;
-  text-decoration:none; color:#fff; font-weight:700; font-size:14px; border-radius: 12px;
-  border: 3px solid transparent; position: relative; overflow: hidden; z-index: 0;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+
+h1 {
+  margin: 5px 0;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.btn::before {
-  content:''; position:absolute; inset:0; padding:3px; border-radius:12px;
-  background:linear-gradient(90deg,#ff4d6d,#38bdf8,#facc15,#d946ef);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out; mask-composite: exclude; z-index:-1;
-  animation: borderShift 5s linear infinite;
+
+p.lead {
+  margin: 5px 0 15px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-@keyframes borderShift { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
-.btn i { font-size:19px; margin-top:2px; }
-.btn:hover { transform: translateY(-3px); }
-.btn.full { width: 80%; margin: 10px auto; }
-.row { width: 82%; margin: 6px auto; display:flex; gap:10px; }
-.row .btn { flex:1; min-width:0; }
-.scroll-down { margin-top: 20px; font-size: 28px; color: #38bdf8; cursor: pointer; animation: bounce 1.5s infinite; }
-@keyframes bounce { 0%,20%,50%,80%,100% { transform: translateY(0); } 40% { transform: translateY(8px); } 60% { transform: translateY(4px); } }
-.section-title { margin-top: 28px; margin-bottom: 6px; font-size: 20px; font-weight: bold; color: #facc15; text-align: center; }
-.about-box {
-  background: rgba(30,41,59,0.6);
-  border: 2px solid #38bdf8;
-  border-radius: 16px;
-  padding: 20px;
-  margin: 24px auto;
-  max-width: 720px;
-  text-align: left;
+
+p.extra {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 auto 25px;
   line-height: 1.6;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  max-width: 90%;
 }
-.about-box h3 { color: #facc15; margin-top: 16px; font-size: 18px; }
-.about-box .intro { font-size: 15px; margin-bottom: 12px; }
-.about-box .highlight { color: #38bdf8; font-weight: bold; }
+
+/* --- Buttons (DevGagan Style) --- */
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 55px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* The Animated Border Effect */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 2px;
+  background: linear-gradient(90deg, var(--neon-pink), var(--accent), var(--neon-gold));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0.7;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.15);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.btn i { font-size: 20px; }
+
+/* --- Scroll Down Arrow --- */
+.scroll-down {
+  margin-top: 30px;
+  font-size: 24px;
+  color: var(--text-muted);
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  opacity: 0.7;
+  transition: color 0.3s;
+}
+.scroll-down:hover { color: var(--accent); opacity: 1; }
+
+/* --- About & Info Section --- */
+.section-title {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-main);
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+.section-title::after {
+  content: ''; display: block; width: 40px; height: 3px; background: var(--accent); margin: 5px auto 0; border-radius: 2px;
+}
+
+.about-box {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 10px auto 40px;
+  max-width: 600px;
+  width: 95%;
+  text-align: left;
+  line-height: 1.7;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-box h3 {
+  color: var(--accent);
+  margin: 25px 0 10px;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-box .intro {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.about-box .intro b { color: var(--text-main); }
+.highlight { color: var(--accent); font-weight: 600; }
+.project-list { padding-left: 0; }
+.project-item {
+  display: block;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-main);
+  border-left: 3px solid var(--neon-pink);
+  transition: transform 0.2s;
+}
+.project-item:hover { transform: translateX(5px); background: rgba(255,255,255,0.06); }
+
+/* --- Animations --- */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulseGlow { 0% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); } 100% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.6); } }
+@keyframes bounce { 0%,20%,50%,80%,100% { transform: translateY(0); } 40% { transform: translateY(8px); } 60% { transform: translateY(4px); } }
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  h1 { font-size: 24px; }
+  .about-box { padding: 20px; }
+}
 </style>
 </head>
 <body>
 <canvas id="particles"></canvas>
 
 <div class="container">
-  <img class="avatar" src="https://files.catbox.moe/opf0f0.jpg" alt="Neon avatar">
+  <div class="avatar-container">
+    <img class="avatar" src="https://files.catbox.moe/opf0f0.jpg" alt="Neon avatar">
+  </div>
   <h1>MyselfNeon</h1>
-  <p class="lead">🚀 Dev | 📚 Student</p>
-  <p class="extra">💡 Exploring Tech, Creating Bots, Automation Scripts, and small Tools that make everyday Tasks easier. Always Learning, always Experimenting.</p>
+  <p class="lead">🚀 Dev | 📚 Student | 🤖 Automation</p>
+  <p class="extra">Exploring Tech, Creating Bots, and building Tools that make everyday Tasks easier. Always Learning, always Experimenting.</p>
+  
+  <div class="btn-wrapper">
+    <a class="btn" href="https://t.me/MyselfNeon" target="_blank">
+      <i class="fab fa-telegram-plane" style="color: #38bdf8;"></i> Telegram
+    </a>
+    <a class="btn" href="https://github.com/MyselfNeon" target="_blank">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+  </div>
 
-  <div class="scroll-down" onclick="document.getElementById('links').scrollIntoView({behavior: 'smooth'})">
+  <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
     <i class="fas fa-angle-down"></i>
   </div>
 </div>
 
-<h2 id="links" class="section-title">🔗 Contact Links</h2>
-<div class="container">
-  <a class="btn telegram full" href="https://t.me/MyselfNeon" target="_blank"><i class="fab fa-telegram-plane"></i>Telegram</a>
-  <a class="btn github full" href="https://github.com/MyselfNeon" target="_blank"><i class="fab fa-github"></i>GitHub</a>
-</div>
+<div id="about"></div>
+<h2 class="section-title">About Me</h2>
 
-<h2 id="about" class="section-title">About Me</h2>
 <div class="about-box">
   <p class="intro">
-    Passionate part-time <span class="highlight">Modder</span> & <span class="highlight">Coder</span> who turns Ideas into Tools.  
-    I Build <span class="highlight">Web Apps, Bots, and Automation Scripts</span> that Solve real problems — not just for Fun, but with Impact.
+    Passionate part-time <span class="highlight">Modder</span> & <span class="highlight">Coder</span> who turns ideas into tools.  
+    I build <span class="highlight">Web Apps, Bots, and Scripts</span> that solve real problems with impact.
   </p>
 
-  <h3>💻 What I Do</h3>
-  <p class="intro">🤖 Develop <b>Telegram Bots</b>: File Rename Tools, Auto-Forwarding Systems, Session Generators, etc.</p>
-  <p class="intro">🐍 Work with <b>Python & Scripting</b> to Automate workflows and Reduce Repetitive Tasks.</p>
-  <p class="intro">🛠️ Create <b>Utilities</b> that Help Communities & Teams be more efficient.</p>
+  <h3><i class="fas fa-laptop-code"></i> What I Do</h3>
+  <p class="intro">🤖 Develop <b>Telegram Bots</b>: File Rename Tools, Auto-Forwarding Systems, Session Generators.</p>
+  <p class="intro">🐍 Work with <b>Python & Scripting</b> to automate workflows and reduce repetitive tasks.</p>
+  <p class="intro">🛠️ Create <b>Utilities</b> that help communities be more efficient.</p>
 
-  <h3>🔥 What Drives Me</h3>
-  <p class="intro">I Love taking Problems and Turning them into something Programmable.</p>
-  <p class="intro">Always curious about <b>New Tech, cleaner Code, Better user Experiences</b>.</p>
-  <p class="intro"><b>Collaboration, Learning, and Iteration</b> are central: every bot/script is a chance to improve.</p>
+  <h3><i class="fas fa-fire"></i> What Drives Me</h3>
+  <p class="intro">I love taking problems and turning them into something programmable. Always curious about <b>New Tech</b> and <b>Better User Experiences</b>.</p>
 
-  <h3>📌 Pinned Projects</h3>
-<span class="intro"><b>01 - NeonFilter-Bot</b></span><br>
-<span class="intro"><b>02 - FileStore-Bot</b></span><br>
-<span class="intro"><b>03 - Rename2GB-Bot</b></span><br>
-<span class="intro"><b>04 - SessionGenerator-Bot</b></span><br>
-<span class="intro"><b>05 - SaveRestrictions-Bot</b></span>
+  <h3><i class="fas fa-thumbtack"></i> Pinned Projects</h3>
+  <div class="project-list">
+    <span class="project-item"><b>01.</b> NeonFilter-Bot</span>
+    <span class="project-item"><b>02.</b> FileStore-Bot</span>
+    <span class="project-item"><b>03.</b> Rename2GB-Bot</span>
+    <span class="project-item"><b>04.</b> SessionGenerator-Bot</span>
+    <span class="project-item"><b>05.</b> SaveRestrictions-Bot</span>
+  </div>
 </div>
 
 <script>
-// === Canvas Setup ===
+// === Canvas Configuration (Optimized for Dark Theme) ===
 const canvas = document.getElementById("particles"), ctx = canvas.getContext("2d");
-function resizeCanvas(){ canvas.width = innerWidth; canvas.height = innerHeight; }
-addEventListener("resize", resizeCanvas);
+function resizeCanvas(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-// === Particles ===
+// === Helper Functions ===
+function randomColor() {
+  const colors = ["rgba(56, 189, 248, 0.7)", "rgba(255, 77, 109, 0.7)", "rgba(250, 204, 21, 0.7)"];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// === Elements: Particles (Subtle background movement) ===
 let particles = [];
-for(let i=0;i<30;i++){ particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)*0.3, dy:(Math.random()-0.5)*0.3}); }
+const particleCount = 40;
 
-// === Twinkles ===
-let twinkles = [];
-for(let i=0;i<60;i++){ twinkles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.5+0.5, alpha:Math.random(), da:(Math.random()*0.02)+0.005}); }
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.r = Math.random() * 2 + 0.5;
+    this.dx = (Math.random() - 0.5) * 0.5;
+    this.dy = (Math.random() - 0.5) * 0.5;
+    this.alpha = Math.random() * 0.5 + 0.1;
+  }
+  update() {
+    this.x += this.dx;
+    this.y += this.dy;
+    if (this.x < 0 || this.x > canvas.width) this.dx *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+    ctx.fill();
+  }
+}
 
-// === Glitter ===
-let glitters = [];
-function spawnGlitter(){ glitters.push({x:Math.random()*canvas.width, y:-10, r:Math.random()*2+1, dy:Math.random()*0.3+0.1, alpha:1}); setTimeout(spawnGlitter,200);}
-spawnGlitter();
-
-// === Shooting Stars ===
+// === Elements: Shooting Stars (Occasional highlight) ===
 let shootingStars = [];
-function drawStar(ctx,x,y,r,color){ ctx.save(); ctx.beginPath(); ctx.translate(x,y); ctx.moveTo(0,-r); for(let i=0;i<5;i++){ctx.rotate(Math.PI/5); ctx.lineTo(0,-r*0.5); ctx.rotate(Math.PI/5); ctx.lineTo(0,-r);} ctx.fillStyle=color; ctx.shadowBlur=10; ctx.shadowColor=color; ctx.fill(); ctx.restore();}
-function spawnShootingStar(){ const colors=["#ff4d6d","#38bdf8","#facc15","#d946ef","#22c55e"]; shootingStars.push({x:Math.random()*canvas.width*0.7, y:Math.random()*canvas.height*0.3, dx:2+Math.random()*1, dy:1+Math.random()*1, r:6, color:colors[Math.floor(Math.random()*colors.length)], trail:[]}); setTimeout(spawnShootingStar,1000+Math.random()*2000);}
+function spawnShootingStar() {
+  const startX = Math.random() * canvas.width;
+  const startY = Math.random() * canvas.height * 0.5;
+  shootingStars.push({
+    x: startX, y: startY,
+    dx: 4 + Math.random() * 2,
+    dy: 2 + Math.random(),
+    life: 1,
+    color: "#38bdf8"
+  });
+  setTimeout(spawnShootingStar, Math.random() * 3000 + 1000);
+}
+
+// Initialize
+for(let i=0; i<particleCount; i++) particles.push(new Particle());
 spawnShootingStar();
 
-// === Snow ===
-let snowflakes = [];
-function spawnSnow(){ for(let i=0;i<2;i++){ let alpha=Math.random()*0.5+0.3; if(alpha>0.6) alpha=0.6; snowflakes.push({x:Math.random()*canvas.width, y:-10, size:Math.random()*6+2, dx:(Math.random()-0.5)*0.5, dy:(Math.random()*1+0.2), alpha});} setTimeout(spawnSnow,200);}
-spawnSnow();
-
 // === Animation Loop ===
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle="rgba(255,255,255,0.7)"; ctx.fill(); p.x+=p.dx; p.y+=p.dy; if(p.x<0||p.x>canvas.width)p.dx*=-1; if(p.y<0||p.y>canvas.height)p.dy*=-1; });
-  twinkles.forEach(t=>{ ctx.beginPath(); ctx.arc(t.x,t.y,t.r,0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${t.alpha})`; ctx.fill(); t.alpha+=t.da; if(t.alpha>1||t.alpha<0) t.da*=-1; });
-  glitters.forEach((g,i)=>{ ctx.beginPath(); ctx.arc(g.x,g.y,g.r,0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${g.alpha})`; ctx.fill(); g.y+=g.dy; g.alpha-=0.002; if(g.alpha<=0) glitters.splice(i,1); });
-  shootingStars.forEach((s,i)=>{ s.trail.unshift({x:s.x,y:s.y,life:1}); if(s.trail.length>20)s.trail.pop(); drawStar(ctx,s.x,s.y,s.r,s.color); s.trail.forEach((pt,ti)=>{ drawStar(ctx,pt.x,pt.y,s.r*(0.6-ti/25),s.color); pt.life-=0.05; }); s.x+=s.dx; s.y+=s.dy; if(s.x>canvas.width+100||s.y>canvas.height+100) shootingStars.splice(i,1); });
-  snowflakes.forEach((flake,i)=>{ ctx.beginPath(); ctx.arc(flake.x,flake.y,flake.size,0,Math.PI*2); ctx.fillStyle=`rgba(236,73,163,${flake.alpha})`; ctx.fill(); flake.x+=flake.dx; flake.y+=flake.dy; flake.alpha-=0.0001; if(flake.y>canvas.height||flake.alpha<=0) snowflakes.splice(i,1); });
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // Draw Particles
+  particles.forEach(p => { p.update(); p.draw(); });
+
+  // Draw Shooting Stars
+  shootingStars.forEach((s, index) => {
+    ctx.beginPath();
+    ctx.moveTo(s.x, s.y);
+    ctx.lineTo(s.x - s.dx * 3, s.y - s.dy * 3); // Tail
+    ctx.strokeStyle = `rgba(56, 189, 248, ${s.life})`;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    
+    // Head glow
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, 1, 0, Math.PI*2);
+    ctx.fillStyle = "#fff";
+    ctx.fill();
+
+    s.x += s.dx;
+    s.y += s.dy;
+    s.life -= 0.02;
+
+    if (s.life <= 0 || s.x > canvas.width || s.y > canvas.height) {
+      shootingStars.splice(index, 1);
+    }
+  });
+
   requestAnimationFrame(animate);
 }
 animate();
 </script>
 </body>
-  </html>
-  
+</html>
