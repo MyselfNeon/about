@@ -10,16 +10,13 @@
 <style>
 /* --- MERGED VARIABLES --- */
 :root {
-  /* Site Theme: Purple/Black */
-  --bg-color: #020202;
-  --primary: #8b5cf6; /* Purple */
-  --secondary: #d946ef; /* Magenta */
-  --accent: #facc15; /* Yellow */
+  --bg-color: #050505; 
+  --primary: #8b5cf6; 
+  --secondary: #d946ef; 
+  --accent: #facc15; 
   
-  /* Glass Variables */
-  --glass: rgba(10, 10, 10, 0.7);
+  --glass: rgba(15, 15, 18, 0.8);
   --glass-border: rgba(139, 92, 246, 0.2); 
-  --sidebar-bg: rgba(5, 5, 8, 0.85);
   
   --text-main: #ffffff;
   --text-muted: #a3a3a3;
@@ -29,132 +26,23 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Outfit', sans-serif; /* Global Font */
-  background-color: var(--bg-color);
+  font-family: 'Outfit', sans-serif;
+  background: radial-gradient(circle at top, #130f26 0%, var(--bg-color) 100%);
   color: var(--text-main);
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
 }
 
-/* --- PARTICLES --- */
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: radial-gradient(circle at bottom, #1e1b4b 0%, #020202 100%);
-}
-
-/* --- SIDEBAR & MENU --- */
-.menu-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1001;
-  background: rgba(139, 92, 246, 0.1);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--glass-border);
-  color: var(--primary);
-  width: 45px;
-  height: 45px;
-  border-radius: 12px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  transition: 0.3s;
-}
-.menu-btn:hover { background: var(--primary); color: #fff; box-shadow: 0 0 15px var(--primary); }
-
-.sidebar {
-  position: fixed;
-  top: 0; left: 0; height: 100%; width: 300px;
-  background: var(--sidebar-bg);
-  backdrop-filter: blur(20px);
-  border-right: 1px solid var(--glass-border);
-  z-index: 1002;
-  transform: translateX(-100%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 20px;
-  display: flex; flex-direction: column; overflow-y: auto;
-}
-.sidebar.active { transform: translateX(0); }
-
-.close-btn {
-  position: absolute; top: 15px; right: 15px;
-  background: none; border: none; color: var(--text-muted);
-  font-size: 1.5rem; cursor: pointer; transition: 0.3s;
-}
-.close-btn:hover { color: #fff; transform: rotate(90deg); }
-
-/* Sidebar Header */
-.dash-header { display: flex; align-items: center; gap: 12px; margin-top: 10px; margin-bottom: 20px; }
-.dash-avatar { width: 60px; height: 60px; border-radius: 12px; border: 2px solid var(--primary); object-fit: cover; }
-.dash-info h4 { margin: 0; font-family: 'Righteous', cursive; color: #fff; }
-.dash-info p { margin: 0; font-size: 0.8rem; color: #ef4444; font-weight: 600; }
-
-/* --- BUTTONS --- */
-.btn-follow {
-  width: 100%; padding: 12px;
-  background: rgba(30, 41, 59, 0.8); /* Dark Slate */
-  border: 1px solid var(--border-light);
-  border-radius: 8px; color: #fff; font-weight: 600;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  text-decoration: none; margin-bottom: 15px; transition: 0.3s;
-}
-.btn-follow:hover { background: #1e293b; border-color: white; }
-
-.action-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 25px; }
-
-.btn-action {
-  padding: 8px 4px; border-radius: 8px; color: white; font-size: 0.75rem;
-  font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center;
-  gap: 4px; transition: 0.2s;
-}
-.btn-updates { background: #64748b; } /* Gray */
-.btn-fork { background: #2563eb; }    /* Blue */
-.btn-sub { background: #dc2626; }     /* Red */
-.btn-action:hover { filter: brightness(1.2); transform: translateY(-2px); }
-
-.explore-title { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
-
-.explore-btn {
-  display: flex; align-items: center; gap: 10px; width: 100%; padding: 12px; margin-bottom: 8px;
-  background: rgba(30, 41, 59, 0.8); 
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-  color: #fff; 
-  text-decoration: none; font-size: 0.9rem; transition: 0.3s;
-}
-.explore-btn i { color: var(--primary); width: 20px; text-align: center; }
-.explore-btn:hover { background: #1e293b; border-color: white; }
-
-/* --- UPDATED FOOTER CSS --- */
-.sidebar-footer { 
-  margin-top: 20px; /* Changed from auto to 20px to sit below buttons */
-  text-align: center; 
-  color: var(--accent); 
-  font-weight: bold; 
-  padding-bottom: 20px; /* Added padding for scrolling */
-}
-
-/* Overlay */
-.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; opacity: 0; pointer-events: none; transition: 0.3s; backdrop-filter: blur(4px); }
-.overlay.active { opacity: 1; pointer-events: all; }
-
-
 /* --- MAIN WRAPPER --- */
 .wrapper {
   max-width: 700px;
   margin: 0 auto;
-  padding: 80px 20px 40px;
+  /* Reduced top padding from 60px to 20px */
+  padding: 20px 20px 40px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px; 
 }
 
 /* Profile Card */
@@ -163,9 +51,10 @@ body {
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 24px;
-  padding: 40px 20px;
+  /* Reduced top padding from 40px to 25px */
+  padding: 25px 20px 40px;
   text-align: center;
-  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
   animation: fadeInDown 1s ease-out;
 }
 
@@ -186,76 +75,190 @@ body {
 h1 { font-family: 'Righteous', cursive; font-size: 2.5rem; margin: 10px 0; color: #fff; text-shadow: 0 0 20px var(--primary); }
 .role { font-size: 1.1rem; color: var(--primary); font-weight: 600; min-height: 1.5em; letter-spacing: 1px; }
 
-/* --- UPDATED BIO TEXT STYLE (Outfit) --- */
+/* Bio Text */
 .bio-text {
   margin-top: 25px;
   margin-bottom: 25px;
   color: var(--text-muted);
-  
-  /* Using Outfit for the about text */
   font-family: 'Outfit', sans-serif;
   font-size: 0.95rem;
-  line-height: 1.7; /* Slightly more spacing for better readability */
-  
+  line-height: 1.7; 
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
-.btn-social {
-  padding: 12px; border-radius: 12px; background: rgba(255,255,255,0.05);
-  border: 1px solid var(--glass-border); color: #fff; text-decoration: none;
-  font-weight: 600; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
+/* Main Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.btn-social:hover { background: var(--primary); transform: translateY(-3px); }
 
+.action-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
 
-/* Skills Grid */
+.btn-top-action {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid var(--primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+}
+.btn-top-action:hover {
+  background: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+/* Buy Me A Coffee Button */
+.bmc-container { width: 100%; margin-top: 4px;}
+.bmc-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  background-color: #FFDD00;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.15);
+}
+.bmc-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+}
+.bmc-btn img {
+  height: 34px; 
+  width: auto;
+  object-fit: contain;
+}
+
+/* Email Text Line */
+.email-line {
+  margin-top: 25px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.email-line a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+.email-line a:hover {
+  color: var(--secondary);
+}
+
+/* --- COLLAPSIBLE CONTENT BOXES --- */
 .content-box {
   background: var(--glass);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  padding: 30px;
+  padding: 25px; 
   animation: fadeInUp 1s ease-out 0.2s backwards;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
 .section-title {
-  display: flex; align-items: center; gap: 10px; font-size: 1.4rem;
-  color: #fff; margin-bottom: 25px; padding-bottom: 10px;
+  display: flex; align-items: center; justify-content: space-between; font-size: 1.3rem;
+  color: #fff; padding-bottom: 5px;
   border-bottom: 1px solid var(--glass-border); font-family: 'Righteous', cursive;
+  cursor: pointer; user-select: none;
+  margin-bottom: 0; transition: margin-bottom 0.3s ease, padding-bottom 0.3s ease;
+  margin-top: 15px; 
 }
+.section-title:first-child {
+  margin-top: 0;
+}
+.section-title.active {
+    margin-bottom: 15px; 
+    padding-bottom: 15px;
+}
+.section-title-left { display: flex; align-items: center; gap: 10px; }
 .section-title i { color: var(--primary); }
+.section-title i.toggle-icon { color: var(--text-muted); font-size: 1rem; transition: transform 0.4s ease; }
+.section-title.active i.toggle-icon { transform: rotate(180deg); }
 
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out;
+}
+.accordion-content.active {
+  max-height: 1500px; 
+  opacity: 1;
+}
+
+/* Tech Stack Specifics */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
 .skill-item {
+  background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px; padding: 12px 15px; transition: 0.3s;
+}
+.skill-item:hover { border-color: var(--primary); transform: translateY(-3px); }
+.skill-name { color: var(--primary); font-weight: 700; margin-bottom: 10px; font-size: 0.95rem; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Rounded tag with light edges */
+.tag { 
+  font-size: 0.75rem; 
+  color: #f1f1f1; 
+  background: rgba(255, 255, 255, 0.05); 
+  padding: 5px 12px; 
+  border-radius: 20px; 
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.02);
+  transition: 0.3s ease;
+}
+.tag:hover {
+  border-color: var(--primary);
+  background: rgba(139, 92, 246, 0.1);
+}
+
+/* Projects Specifics */
+.projects-list { display: flex; flex-direction: column; gap: 15px; }
+.project-card {
   background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05);
   border-radius: 12px; padding: 15px; transition: 0.3s;
 }
-.skill-item:hover { border-color: var(--primary); transform: translateY(-5px); }
-.skill-name { color: var(--primary); font-weight: 700; margin-bottom: 8px; font-size: 0.9rem; }
-.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tag { font-size: 0.75rem; color: #aaa; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 4px; }
-
-
-/* Timeline */
-.timeline { position: relative; padding-left: 20px; border-left: 2px solid rgba(139, 92, 246, 0.3); }
-.timeline-item { position: relative; margin-bottom: 30px; padding-left: 20px; }
-.timeline-item::before {
-  content: ''; position: absolute; left: -29px; top: 5px; width: 12px; height: 12px;
-  background: var(--bg-color); border: 3px solid var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary);
-}
-.year-badge {
-  display: inline-block; background: var(--primary); color: #fff;
-  font-size: 0.7rem; font-weight: bold; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px;
-}
-.project-card {
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 12px; padding: 15px; transition: 0.3s;
-}
-.project-card:hover { border-color: var(--primary); background: rgba(255,255,255,0.06); }
-.project-title { color: #fff; font-weight: 600; margin-bottom: 5px; display: flex; justify-content: space-between; }
+.project-card:hover { border-color: var(--primary); background: rgba(255,255,255,0.02); }
+.project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 5px; }
+.project-title { color: #fff; font-weight: 600; font-size: 1.05rem; }
+.project-tech { font-size: 0.75rem; color: var(--secondary); background: rgba(217, 70, 239, 0.1); padding: 3px 8px; border-radius: 6px; font-weight: 600; }
 .project-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+
+/* Quick Links Specifics */
+.links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.link-btn {
+  display: flex; align-items: center; gap: 10px; padding: 12px 15px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; color: #fff; text-decoration: none;
+  font-size: 0.95rem; font-weight: 500; transition: 0.3s;
+}
+.link-btn i { color: var(--primary); width: 22px; text-align: center; font-size: 1.1rem; transition: color 0.3s; }
+.link-btn:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-3px); }
+.link-btn:hover i { color: #fff; }
 
 /* Animations */
 @keyframes fadeInDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
@@ -264,54 +267,12 @@ h1 { font-family: 'Righteous', cursive; font-size: 2.5rem; margin: 10px 0; color
 /* Responsive */
 @media (max-width: 500px) {
   h1 { font-size: 2rem; }
-  .skills-grid { grid-template-columns: 1fr; }
+  .skills-grid, .links-grid { grid-template-columns: 1fr; }
+  .action-row { grid-template-columns: 1fr; } 
 }
 </style>
 </head>
 <body>
-
-<canvas id="particles"></canvas>
-
-<button class="menu-btn" onclick="toggleSidebar()">
-    <i class="fas fa-bars"></i>
-</button>
-
-<nav class="sidebar" id="sidebar">
-    <button class="close-btn" onclick="toggleSidebar()">×</button>
-    
-    <div class="dash-header">
-        <img src="https://i.ibb.co/dJ7bb5CS/neon.jpg" class="dash-avatar" alt="Avatar">
-        <div class="dash-info">
-            <h4>MyselfNeon</h4>
-            <p>Admin Mode</p>
-        </div>
-    </div>
-
-    <a href="https://github.com/MyselfNeon" target="_blank" class="btn-follow">
-        <i class="fab fa-github"></i> Follow on GitHub
-    </a>
-
-    <div class="action-grid">
-        <a href="https://t.me/NeonFiles" class="btn-action btn-updates"><i class="fab fa-telegram-plane"></i> Updates</a>
-        <a href="https://myselfneon.github.io/neon/" class="btn-action btn-fork"><i class="fas fa-code-branch"></i> Fork</a>
-        <a href="https://youtube.com/@myselfneon" class="btn-action btn-sub"><i class="fab fa-youtube"></i> Sub</a>
-    </div>
-
-    <h5 class="explore-title">Quick Links</h5>
-    <div class="explore-list">
-        <a href="https://t.me/MyselfNeon" class="explore-btn"><i class="fas fa-crown"></i> Owner</a>
-        <a href="https://t.me/MyselfNeon" class="explore-btn"><i class="fab fa-telegram-plane"></i> Telegram</a>
-        <a href="https://www.instagram.com/neon.an_" class="explore-btn"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://youtube.com/@myselfneon" class="explore-btn"><i class="fab fa-youtube"></i> YouTube</a>
-        <a href="https://platinmods.com/members/neon-an.3695277/" class="explore-btn"><i class="fas fa-gamepad"></i> Platinmods</a>
-    </div>
-
-    <div class="sidebar-footer">
-        © MyselfNeon
-    </div>
-</nav>
-<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
-
 
 <div class="wrapper">
     
@@ -323,136 +284,164 @@ h1 { font-family: 'Righteous', cursive; font-size: 2.5rem; margin: 10px 0; color
         <div class="role" id="typewriter"></div>
 
         <div class="bio-text">
-            <p>I'm a passionate creative developer and bot maker with years of experience building automation tools that users love. I believe in the power of good design and clean code to solve real problems.</p>
+            <p>I'm a passionate software developer, Android modder, and tester with a deep interest in reverse engineering and app modification. I believe in the power of clean code and optimized performance to solve complex real-world problems.</p>
             <br>
-            <p>When I'm not coding, you'll find me exploring new libraries, contributing to open-source projects, or sharing my knowledge through my Telegram channels.</p>
-            <br>
-            <p>I'm always excited to work on projects that challenge me to grow and learn something new.</p>
+            <p>When I'm not writing scripts or testing the latest mobile game mods, you'll find me exploring new UI frameworks, managing communities, or catching up on the latest anime and manga releases.</p>
         </div>
 
-        <div class="social-grid">
-            <a href="https://t.me/MyselfNeon" class="btn-social"><i class="fab fa-telegram-plane"></i> Telegram</a>
-            <a href="https://github.com/MyselfNeon" class="btn-social"><i class="fab fa-github"></i> GitHub</a>
-        </div>
-    </div>
-
-    <div class="content-box">
-        <h3 class="section-title"><i class="fas fa-code"></i> Tech Stack</h3>
-        <div class="skills-grid">
-            <div class="skill-item">
-                <div class="skill-name">Languages</div>
-                <div class="skill-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">HTML/CSS</span>
-                </div>
+        <div class="action-buttons">
+            <div class="action-row">
+                <a href="https://t.me/MyselfNeon" class="btn-top-action">
+                    <i class="fab fa-telegram-plane"></i> Contact me on Telegram
+                </a>
+                <a href="https://platinmods.com/members/neon-an.3695277/" class="btn-top-action">
+                    <i class="fas fa-gamepad"></i> Contact me on Platinmods
+                </a>
             </div>
-            <div class="skill-item">
-                <div class="skill-name">Frameworks</div>
-                <div class="skill-tags">
-                    <span class="tag">Pyrogram</span>
-                    <span class="tag">Aiogram</span>
-                    <span class="tag">Telethon</span>
-                </div>
-            </div>
-            <div class="skill-item">
-                <div class="skill-name">DevOps</div>
-                <div class="skill-tags">
-                    <span class="tag">Docker</span>
-                    <span class="tag">MongoDB</span>
-                    <span class="tag">Git</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="content-box">
-        <h3 class="section-title"><i class="fas fa-history"></i> Experience</h3>
-        <div class="timeline">
             
-            <div class="timeline-item">
-                <span class="year-badge">2025</span>
-                <div class="project-card">
-                    <div class="project-title">Mirror Leech Bot <i class="fas fa-cloud-download-alt"></i></div>
-                    <div class="project-desc">High-speed mirror & leech bot for direct links, torrents, and cloud uploads with real-time progress and smart file handling.</div>
-                </div>
+            <div class="bmc-container">
+                <a href="https://payme.neonpmt03.workers.dev" target="_blank" class="bmc-btn">
+                    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee">
+                </a>
             </div>
-
-            <div class="timeline-item">
-                <span class="year-badge">2025</span>
-                <div class="project-card">
-                    <div class="project-title">Save Restriction Bot <i class="fas fa-shield-alt"></i></div>
-                    <div class="project-desc">Advanced restricted content leecher bot to copy files from restricted channels or groups where forwarding is off.</div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <span class="year-badge">2024</span>
-                <div class="project-card">
-                    <div class="project-title">Auto Filter Bot <i class="fas fa-filter"></i></div>
-                    <div class="project-desc">Smart auto-indexing bot for fast file search, organization, and instant content delivery from channels.</div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <span class="year-badge">2024</span>
-                <div class="project-card">
-                    <div class="project-title">Google Drive Bot <i class="fab fa-google-drive"></i></div>
-                    <div class="project-desc">Seamless Telegram–Google Drive integration for fast uploads, downloads, and automated cloud file management.</div>
-                </div>
-            </div>
-
         </div>
+        
+        <p class="email-line">send or msg me in email at - <a href="mailto:justasneon@gmail.com">justasneon@gmail.com</a></p>
+    </div>
+
+    <div class="content-box">
+        
+        <h3 class="section-title" onclick="toggleAccordion('projectsContent', this)">
+            <div class="section-title-left"><i class="fas fa-layer-group"></i> Featured Projects</div>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </h3>
+        <div class="accordion-content" id="projectsContent">
+            <div class="projects-list">
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-title">ImGui Android Mod Menu Base</span>
+                        <span class="project-tech">C++ / JNI</span>
+                    </div>
+                    <div class="project-desc">A highly customizable, floating ImGui-based mod menu template tailored for IL2CPP Android games. Features touch-friendly UI routing, memory patching hooks, and anti-cheat signature bypasses.</div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-title">Mihon / Aniyomi Extensions</span>
+                        <span class="project-tech">Kotlin / Python</span>
+                    </div>
+                    <div class="project-desc">Custom web scrapers and repository extensions developed for the Mihon and Aniyomi ecosystems, handling Cloudflare bypasses and video server extraction for high-speed streaming.</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-title">Automated ReVanced Patcher</span>
+                        <span class="project-tech">Bash / CI/CD</span>
+                    </div>
+                    <div class="project-desc">A continuous integration pipeline utilizing the ReVanced CLI to automatically fetch stock APKs, apply microG and ad-blocking patches, and reliably compile the modified apps.</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-title">XenForo-Telegram Sync Bot</span>
+                        <span class="project-tech">Python / Pyrogram</span>
+                    </div>
+                    <div class="project-desc">A robust API bridge connecting XenForo forums and Telegram. Automates VIP role synchronization, pushes live mod update notifications, and manages seamless user authentication.</div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title" onclick="toggleAccordion('techStackContent', this)">
+            <div class="section-title-left"><i class="fas fa-code"></i> Tech Stack</div>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </h3>
+        <div class="accordion-content" id="techStackContent">
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">Languages</div>
+                    <div class="skill-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Bash</span>
+                        <span class="tag">Dart</span>
+                        <span class="tag">C++</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Frameworks & Libs</div>
+                    <div class="skill-tags">
+                        <span class="tag">Flask</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Flutter</span>
+                        <span class="tag">React</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">DevOps & Tools</div>
+                    <div class="skill-tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Android Studio</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title" onclick="toggleAccordion('quickLinksContent', this)">
+            <div class="section-title-left"><i class="fas fa-link"></i> Quick Links</div>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </h3>
+        <div class="accordion-content" id="quickLinksContent">
+            <div class="links-grid">
+                <a href="https://github.com/MyselfNeon" class="link-btn"><i class="fab fa-github"></i> GitHub Profile</a>
+                <a href="https://www.instagram.com/neon.an_" class="link-btn"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://youtube.com/@myselfneon" class="link-btn"><i class="fab fa-youtube"></i> YouTube</a>
+            </div>
+        </div>
+
     </div>
 
 </div>
 
 <script>
-// Sidebar Toggle
-function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('active');
-    document.getElementById('overlay').classList.toggle('active');
+// Generic Accordion Toggle
+function toggleAccordion(contentId, element) {
+    element.classList.toggle('active');
+    document.getElementById(contentId).classList.toggle('active');
 }
 
 // Typewriter
 const textElement = document.getElementById("typewriter");
-const texts = ["🚀 Developer", "🤖 Bot Maker", "🐍 Pythonista", "✨ Modder"];
+const texts = ["🚀 Developer", "📱 Android Modder", "🐍 Pythonista", "✨ Mod Tester"];
 let textIndex = 0, charIndex = 0, isDeleting = false;
+
 function type() {
   const currentText = texts[textIndex];
-  if (isDeleting) { textElement.textContent = currentText.substring(0, charIndex - 1); charIndex--; } 
-  else { textElement.textContent = currentText.substring(0, charIndex + 1); charIndex++; }
-  if (!isDeleting && charIndex === currentText.length) { isDeleting = true; setTimeout(type, 2000); } 
-  else if (isDeleting && charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; setTimeout(type, 500); } 
-  else { setTimeout(type, isDeleting ? 50 : 100); }
+  if (isDeleting) { 
+      textElement.textContent = currentText.substring(0, charIndex - 1); 
+      charIndex--; 
+  } else { 
+      textElement.textContent = currentText.substring(0, charIndex + 1); 
+      charIndex++; 
+  }
+  
+  if (!isDeleting && charIndex === currentText.length) { 
+      isDeleting = true; 
+      setTimeout(type, 2000); 
+  } else if (isDeleting && charIndex === 0) { 
+      isDeleting = false; 
+      textIndex = (textIndex + 1) % texts.length; 
+      setTimeout(type, 500); 
+  } else { 
+      setTimeout(type, isDeleting ? 40 : 80); 
+  }
 }
 type();
-
-// Particles
-const canvas = document.getElementById("particles"), ctx = canvas.getContext("2d");
-function resizeCanvas(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
-
-const rand = (min, max) => Math.random() * (max - min) + min;
-let particles = [];
-const colors = ["#8b5cf6", "#d946ef", "#ffffff"]; 
-for(let i=0; i<45; i++){ 
-    particles.push({
-        x: Math.random()*canvas.width, y: Math.random()*canvas.height, 
-        r: Math.random()*1.5, dx: (Math.random()-0.5)*0.3, dy: (Math.random()-0.5)*0.3, 
-        color: colors[Math.floor(Math.random()*colors.length)], alpha: Math.random()
-    }); 
-}
-function animate(){
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => {
-    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.globalAlpha = p.alpha; ctx.fill(); ctx.globalAlpha = 1; p.x += p.dx; p.y += p.dy;
-    if(p.x < 0 || p.x > canvas.width) p.dx *= -1; if(p.y < 0 || p.y > canvas.height) p.dy *= -1;
-  });
-  requestAnimationFrame(animate);
-}
-animate();
 </script>
 </body>
 </html>
