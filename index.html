@@ -270,6 +270,16 @@ h1 { font-family: 'Righteous', cursive; font-size: 2.5rem; margin: 10px 0; color
   .skills-grid, .links-grid { grid-template-columns: 1fr; }
   .action-row { grid-template-columns: 1fr; } 
 }
+
+/* Disable long-press link previews and selections */
+.no-preview {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
 </style>
 </head>
 <body>
@@ -291,16 +301,16 @@ h1 { font-family: 'Righteous', cursive; font-size: 2.5rem; margin: 10px 0; color
 
         <div class="action-buttons">
             <div class="action-row">
-                <a href="https://t.me/MyselfNeon" class="btn-top-action">
+                <a href="https://t.me/MyselfNeon" class="btn-top-action no-preview">
                     <i class="fab fa-telegram-plane"></i> Contact me on Telegram
                 </a>
-                <a href="https://platinmods.com/members/neon-an.3695277/" class="btn-top-action">
+                <a href="https://platinmods.com/members/neon-an.3695277/" class="btn-top-action no-preview">
                     <i class="fas fa-gamepad"></i> Contact me on Platinmods
                 </a>
             </div>
             
             <div class="bmc-container">
-                <a href="https://pay.myselfneon.workers.dev" target="_blank" class="bmc-btn">
+                <a href="https://pay.myselfneon.workers.dev" target="_blank" class="bmc-btn no-preview">
                     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee">
                 </a>
             </div>
@@ -442,6 +452,13 @@ function type() {
   }
 }
 type();
+
+// Disable context menu/long-press preview on specific buttons
+document.querySelectorAll('.no-preview').forEach(button => {
+    button.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+});
 </script>
 </body>
 </html>
